@@ -10,14 +10,14 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg"
-         :class="{'navbar-light bg-light': !useDarkNav, 'navbar-dark bg-dark': useDarkNav }"
+         :class="NavBarClasses"
     >
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Vue</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
             <ul class="navbar-nav">
               <li v-for="(page, index) in pages" class="nav-item" :key="index">
                 <a 
@@ -46,6 +46,14 @@
 
     <script>
         Vue.createApp({
+            computed: {
+              NavBarClasses() {
+                return {
+                  'navbar-light bg-light': !this.useDarkNav,
+                  'navbar-dark bg-dark': this.useDarkNav,
+                }
+              }
+            },
             data() {
                 return {
                   activePage: 0,
