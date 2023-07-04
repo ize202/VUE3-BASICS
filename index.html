@@ -19,7 +19,8 @@
             <ul class="navbar-nav">
               <li v-for="(page, index) in pages" class="nav-item" :key="index">
                 <a 
-                class="nav-link active" 
+                class="nav-link"
+                :class="{active: activePage == index}" 
                 aria-current="page" 
                 :href="page.link.url"
                 :title="`This link goes to ${page.link.url}`"
